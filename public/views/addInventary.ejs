@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="/css/styles.css"> -->
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/forms.css">
+    <script src="https://kit.fontawesome.com/a54879e6c0.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,300&display=swap"
+        rel="stylesheet">
+    <title>Añadir cliente</title>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="nav-bar">
+                <div class="img">
+                    <!-- <img src="/img/logo.jpeg" class="logo" alt="Logo miscelanea esmeralda"> -->
+                    <img src="/img/logo.jpeg" class="logo" alt="Logo miscelanea esmeralda">
+                </div>
+
+                <nav>
+                    <ul>
+                        <li>
+                            <a href="#">Inicio</a>
+                        <li>
+                            <a href="#">Adminsitración de usuarios</a>
+                        </li>
+
+                        <li>
+                            <a href="#">Ventas</a>
+                        </li>
+
+                        <li>
+                            <a href="#">Finanzas</a>
+                        </li>
+                    </ul>
+
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <h1>Registrar Cliente</h1>
+        <form action="add-client" method="POST" autocomplete="off">
+
+            <select name="proveedor">
+                <% for (var i=0; i < suppliers.length; i++) { %>
+                <option value="<%= suppliers[i].idProveedor %>"><%= suppliers[i].nombreEmpresa %></option>
+                <% } %>
+
+            </select>
+            <input type="text" name="nombres" placeholder="Nombre" required>
+            <input type="text" name="Apaterno" placeholder="Apellido Paterno" required>
+            <input type="text" name="Amaterno" placeholder="Apellido Materno" required>
+            <input type="number" name="telefono" placeholder="Número telefónico" value="Telefono" min="10" required>
+            <input type="email" name="correo" placeholder="Correo electrónico" required>
+            <input type="submit" value="Registrar cliente">
+        </form>
+    </div>
+
+</body>
+
+</html>

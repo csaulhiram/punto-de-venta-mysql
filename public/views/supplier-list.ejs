@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/table.css">
+    <link rel="stylesheet" href="/css/alerts.css">
+    <script src="https://kit.fontawesome.com/a54879e6c0.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,300&display=swap"
+        rel="stylesheet">
+    <title>Listado de proveedores</title>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="nav-bar">
+                <div class="img">
+                    <img src="/img/logo.jpeg" class="logo" alt="Logo miscelanea esmeralda">
+                </div>
+
+                <nav>
+                    <ul>
+                        <li>
+                            <a href="#">Inicio</a>
+                        <li>
+                            <a href="#">Adminsitración de usuarios</a>
+                        </li>
+
+                        <li>
+                            <a href="#">Ventas</a>
+                        </li>
+
+                        <li>
+                            <a href="#">Finanzas</a>
+                        </li>
+                    </ul>
+
+                </nav>
+            </div>
+        </div>
+    </header>
+
+</body>
+<div class="container">
+    <h1>Lista de proveedores</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>idProveedor</th>
+                <th>Nombre empresa</th>
+                <th>Telefono</th>
+                <th>correo</th>
+                <th>Fecha de registro</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <% if (supplier) { %>
+            <tbody>
+                <% for (var i=0; i < supplier.length; i++) { %>
+                    <tr>
+                        <td>
+                            <%= supplier[i].idProveedor %>
+                        </td>
+                        <td>
+                            <%= supplier[i].nombreEmpresa %>
+                        </td>
+                        <td>
+                            <%= supplier[i].telefono %>
+                        </td>
+                        <td>
+                            <%= supplier[i].correo %>
+                        </td>
+                        <td>
+                            <%= supplier[i].fechaRegistro %>
+                        </td>
+                        <td>
+                            <a href="/api/supplier/delete-supplier/<%= supplier[i].idProveedor%>" class="btn btn-danger">Eliminar</a>
+                            <a href="/api/supplier/update-supplier/<%= supplier[i].idProveedor%>" class="btn-update">Actualizar</a>
+                        </td>
+                    </tr>
+                    <% } %>
+            </tbody>
+            <% } %>
+    </table>
+</div>
+
+</html>

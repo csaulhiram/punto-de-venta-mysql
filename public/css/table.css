@@ -1,0 +1,79 @@
+table {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    width: 100%;
+    border-collapse: collapse;
+    background-color: rgba(255, 255, 255, 0.466);
+}
+
+th {
+    background-color: #3da793;
+    color: #ffff !important;
+    font-weight: bold;
+    font-size: 20px !important;
+}
+
+th,
+td {
+    padding: 5px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    font-style: bold;
+    text-align: center;
+    color: #000;
+    border: 2px solid rgba(0, 0, 0, 0.664);
+}
+
+tr {
+    justify-content: center;
+    align-items: center;
+}
+
+tr:hover td {
+    background-color: #3da79471;
+    color: #ffff;
+    cursor: pointer;
+}
+
+tr td:hover {
+    background: #ffc08094;
+}
+
+tr td .btn-danger {
+    display: block;
+    width: 70px;
+    padding: 5px;
+    text-decoration: none;
+    color: #ffff;
+    background: rgb(207, 62, 62);
+}
+
+tr td  .btn-update {
+    display: block;
+    width: 78px;
+    padding: 5px;
+    text-decoration: none;
+    color: #ffff;
+    background: rgb(62, 207, 106);
+}
+
+tr .button .btn-delete,
+tr .button .btn-update {
+    font-family: 'Roboto', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    font-style: bold;
+    text-align: center;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    display: block;
+    padding: 5px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+tr .button .btn-delete:hover,
+tr .button .btn-update:hover {
+    text-decoration: underline;
+}

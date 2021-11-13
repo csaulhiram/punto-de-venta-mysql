@@ -12,6 +12,9 @@ class Server {
 
         this.paths = {
             client: '/api/client',
+            employee: '/api/employee',
+            supplier: '/api/supplier',
+            inventary: '/api/inventary'
         }
         this.settings();
 
@@ -24,9 +27,6 @@ class Server {
         this.routes();
     }
 
-    /*     conectarDb() {
-            connectDB();
-        } */
 
     settings() {
         this.app.set('view engine', 'ejs'); //Le decimos donde está nuestro motor de plantillas
@@ -40,10 +40,9 @@ class Server {
 
         // Lectura y parseo del body
         this.app.use(express.json());
-
+        this.app.use(express.urlencoded());
         // Directorio Público
-        this.app.use(express.static('public'));
-
+        this.app.use(express.static(path.join(__dirname, '../public/')));
         // Connection db
         this.app.use(connectDB);
 
@@ -51,6 +50,9 @@ class Server {
 
     routes() {
         this.app.use(this.paths.client, require('../routes/client'));
+        this.app.use(this.paths.employee, require('../routes/employees'));
+        this.app.use(this.paths.supplier, require('../routes/supplier'));
+        this.app.use(this.paths.inventary, require('../routes/inventary'));
     }
 
     listen() {

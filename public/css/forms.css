@@ -1,0 +1,71 @@
+form {
+    width: 100%;
+    margin: 0 auto;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.container input[type='text'],
+.container input[type='password'],
+.container input[type='email'],
+.container input[type='date'],
+.container input[type='time'],
+.container input[type='file'],
+.container input[type='number'],
+.container .select-departament {
+    width: 30%;
+    height: 40px;
+    border: none;
+    border-radius: 3px;
+    margin-top: 25px;
+    font-size: 20px;
+    font-weight: 500;
+    font-style: bold;
+    text-align: center;
+    padding: 10px;
+    align-self: center;
+    outline: none;
+}
+
+.container .select-departament {
+    height: 45px;
+    color: #686060;
+    text-align: center;
+}
+
+.container .select-departament:hover {
+    color: #ffffff;
+    cursor: pointer;
+    background-color: rgba(149, 35, 206, .8);
+    border: 2px solid rgba(255, 255, 2255, 0.5);
+}
+
+.container .select-departament .user-option:hover {
+    background-color: rgba(142, 92, 167, 0.986);
+}
+
+.container input[type='submit'] {
+    width: 25%;
+    height: 40px;
+    padding: 5px;
+    font-size: 20px;
+    font-weight: 500;
+    background: #686060;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    margin-top: 25px;
+    display: block;
+    align-self: center;
+}
+
+.container input[type='submit']:hover {
+    color: #000;
+    cursor: pointer;
+    background-color: #fff;
+    border: 2px solid rgba(255, 255, 2255, 0.5);
+}

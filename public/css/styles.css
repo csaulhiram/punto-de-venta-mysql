@@ -1,0 +1,143 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+
+/* 
+    GENERAL STYLES
+*/
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background: rgb(255, 192, 128);
+    background: linear-gradient(83deg, rgba(255, 192, 128, 1) 14%, rgba(59, 206, 180, 1) 100%);
+}
+
+header {
+
+    width: 100%;
+    background: rgb(255, 255, 255);
+}
+.container h1 {
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    margin-top: 50px;
+    font-size: 3rem;
+}
+
+.container {
+    width: 75%;
+    margin: 0 auto
+}
+
+header .container .nav-bar {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+header .container .nav-bar .img {
+    width: 300px;
+    margin-top: 15px;
+    margin-bottom: 20px;
+}
+
+header .container .nav-bar img {
+    width: 300px;
+}
+
+header .container .nav-bar ul {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding-top: 20px;
+}
+
+header .container .nav-bar ul li {
+    list-style: none;
+    text-align: center;
+    margin-right: 20px;
+    border-radius: 5px;
+}
+
+header .container .nav-bar ul li a {
+    display: block;
+    width: 100%;
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    padding: 10px 20px;
+    color: #000;
+    text-decoration: none;
+    border-bottom: 3px solid transparent;
+}
+
+header .container .nav-bar ul li a:hover {
+    border-bottom: 3px solid #3BCEB4;
+}
+
+.cards {
+    margin-top: 40px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    padding-top: 20px;
+}
+
+.cards .card {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+    height: 400px;
+    background: rgba(255, 255, 255, .2);
+    border: 3px solid #fff;
+    text-align: center;
+    color: #fff;
+    border-radius: 10px;
+    margin-bottom: 30px;
+}
+
+.cards .card .card-logo {
+    font-size: 10rem;
+}
+
+.cards .card .card-logo i {
+    display: block;
+    border-bottom: 2px solid #fff;
+    margin-bottom: 20px;
+}
+
+.cards .card .button-a {
+    
+}
+
+.cards .card  a {
+    display: block;
+    width: 250px;
+    height: auto;
+    background: #000;
+    text-align: center;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    border-radius: 10px;
+    color: #fff;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.cards .card a:hover {
+    background: #ffff;
+    color: #000;
+}
