@@ -17,10 +17,10 @@ body {
 }
 
 header {
-
     width: 100%;
     background: rgb(255, 255, 255);
 }
+
 .container h1 {
     font-family: 'Roboto', sans-serif;
     text-align: center;
@@ -75,6 +75,7 @@ header .container .nav-bar ul li a {
     color: #000;
     text-decoration: none;
     border-bottom: 3px solid transparent;
+    transition: all 1s;
 }
 
 header .container .nav-bar ul li a:hover {
@@ -117,11 +118,11 @@ header .container .nav-bar ul li a:hover {
     margin-bottom: 20px;
 }
 
-.cards .card .button-a {
-    
+.cards .card .card-logo .reduce-size {
+    padding-bottom: 15px;
 }
 
-.cards .card  a {
+.cards .card a {
     display: block;
     width: 250px;
     height: auto;
@@ -140,4 +141,48 @@ header .container .nav-bar ul li a:hover {
 .cards .card a:hover {
     background: #ffff;
     color: #000;
+}
+
+/* 
+    Administración de usuarios styles
+*/
+
+.operations {
+    margin: 0 auto;
+    margin-top: 0px;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.operations .operation {
+    width: 60%;
+    border-radius: 20px;
+    color: #fff;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.8rem;
+    text-align: center;
+    margin: 30px;
+}
+
+.operations .operation a {
+    display: block;
+    width: 80%;
+    height: 90px;
+    line-height: 90px;
+    color: #fff;
+    border-radius: 20px;
+    text-decoration: none;
+    text-align: center;
+    border: 3px solid rgba(255, 255, 255, 0.384);
+    background: rgb(255, 192, 128);
+    background: linear-gradient(83deg, rgb(179, 142, 105) 14%, rgba(59, 206, 180, 1) 100%);
+    transition: all 300ms;
+}
+
+.operations .operation a:hover {
+    box-shadow: 5px 5px 5px #c2c2c2;
 }

@@ -12,26 +12,25 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,300&display=swap"
         rel="stylesheet">
-    <title>Adminsitración de usuarios</title>
+    <title>Adminsitración de Inventario</title>
 </head>
 
 <body>
     <%-include ('partials/_header') %>
 
     <div class="container">
-        <div class="cards">
-            <div class="card">
-                <div class="card-logo">
-                    <i class="fas fa-plus-square"></i>
-                </div>
-                <a href="/api/client/show-form">Crear Usuario</a>
+        <h1>Adminsitración de usuarios</h1>
+        <div class="operations">
+            <div class="operation">
+                <a href="/api/client/client-menu">Operaciones con clientes</a>
             </div>
 
-            <div class="card">
-                <div class="card-logo">
-                    <i class="fas fa-users"></i>
-                </div>
-                <a href="/api/client/get-clients">Listar usuarios</a>
+            <div class="operation">
+                <a href="/api/employee/employee-menu">Operaciones con empleados</a>
+            </div>
+
+            <div class="operation">
+                <a href="/api/supplier/supplier-menu">Operaciones con proveedores</a>
             </div>
         </div>
     </div>

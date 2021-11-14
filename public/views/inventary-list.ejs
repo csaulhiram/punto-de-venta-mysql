@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/img/logo.ico">
     <link rel="stylesheet" href="/css/styles.css">
     <link rel="stylesheet" href="/css/table.css">
     <link rel="stylesheet" href="/css/alerts.css">
@@ -17,35 +18,7 @@
 </head>
 
 <body>
-    <header>
-        <div class="container">
-            <div class="nav-bar">
-                <div class="img">
-                    <img src="/img/logo.jpeg" class="logo" alt="Logo miscelanea esmeralda">
-                </div>
-
-                <nav>
-                    <ul>
-                        <li>
-                            <a href="#">Inicio</a>
-                        <li>
-                            <a href="#">Adminsitración de usuarios</a>
-                        </li>
-
-                        <li>
-                            <a href="#">Ventas</a>
-                        </li>
-
-                        <li>
-                            <a href="#">Finanzas</a>
-                        </li>
-                    </ul>
-
-                </nav>
-            </div>
-        </div>
-    </header>
-
+    <%-include ('partials/_header') %>
 </body>
     <div class="container">
         <h1>Lista de Productos</h1>
@@ -79,8 +52,8 @@
                     <td><%= products[i].existencias %></td>
                     <td><%= products[i].codigoBarras %></td>
                     <td>
-                        <a href="/api/employee/delete-employee/<%= products[i].idProducto%>" class="btn btn-danger">Eliminar</a>
-                        <a href="/api/employee/update-employee/<%= products[i].idProducto%>" class="btn-update">Actualizar</a>
+                        <a href="/api/inventary/delete-inventary/<%= products[i].idProducto%>" class="btn btn-danger">Eliminar</a>
+                        <a href="/api/inventary/update-inventary/<%= products[i].idProducto%>" class="btn-update">Actualizar</a>
                     </td>
                 </tr>
                 <% } %>

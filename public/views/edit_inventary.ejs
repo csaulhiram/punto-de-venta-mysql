@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/img/logo.ico">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/forms.css">
+    <script src="https://kit.fontawesome.com/a54879e6c0.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,300&display=swap"
+        rel="stylesheet">
+    <title>Editar Producto</title>
+</head>
+
+<body>
+    <%-include ('partials/_header') %>
+
+    <div class="container">
+        <h1>Editar Producto</h1>
+
+        <form action="/api/inventary/update-product/<%= data.idProducto %>" method="POST" autocomplete="off">
+            <input type="text" name="nombreArticulo" value="<%= data.nombreArticulo %>" placeholder="Nombre del artículo" required>
+            <input type="number" step="0.1" name="precioCompra" value="<%= data.precioCompra %>" placeholder="Precio de compra" required>
+            <input type="number" step="0.1" name="precioVenta" value="<%= data.precioVenta %>" placeholder="Precio de venta" required>
+            <input type="number" name="entradas" value="<%= data.entradas %>" placeholder="entradas" required>
+            <input type="text" name="codigoBarras" value="<%= data.codigoBarras %>" placeholder="Código de barras" required>
+
+            <input type="submit" value="Actualizar Producto">
+        </form>
+    </div>
+
+</body>
+
+</html>

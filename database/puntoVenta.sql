@@ -32,11 +32,12 @@ CREATE TABLE proveedores(idProveedor INT AUTO_INCREMENT NOT NULL,
 
 CREATE TABLE IF NOT EXISTS facturasProveedores(idFactura INT NOT NULL AUTO_INCREMENT,
 	idProveedor INT NOT NULL,
-	fechaRegistro timestamp NOT NULL DEFAULT current_timestamp,
-	descuento FLOAT,
-	IEPS FLOAT,
-	IVA FLOAT,
+	subtotal FLOAT NOT NULL,
+	descuento FLOAT NOT NULL,
+	IEPS FLOAT NOT NULL,
+	IVA FLOAT NOT NULL,
 	total FLOAT NOT NULL,
+	fechaRegistro timestamp NOT NULL DEFAULT current_timestamp,
 	PRIMARY KEY(idFactura),
 	FOREIGN KEY(idProveedor) REFERENCES proveedores(idProveedor));
 

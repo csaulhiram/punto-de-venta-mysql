@@ -14,7 +14,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,300&display=swap"
         rel="stylesheet">
-    <title>Listado de clientes</title>
+    <title>Listado de facturas</title>
 </head>
 
 <body>
@@ -22,36 +22,33 @@
 
 </body>
     <div class="container">
-        <h1>Lista de clientes</h1>
+        <h1>Lista de Facturas</h1>
 
         <table>
             <thead>
                 <tr>
-                    <th>idCliente</th>
-                    <th>nombres</th>
-                    <th>Apellido Paterno</th>
-                    <th>Apellido Maerno</th>
-                    <th>Telefono</th>
-                    <th>correo</th>
+                    <th>idFactura</th>
+                    <th>Proveedor</th>
+                    <th>Subtotal</th>
+                    <th>Descuentos</th>
+                    <th>IVA</th>
+                    <th>IEPS</th>
+                    <th>Total</th>
                     <th>Fecha de registro</th>
-                    <th>Acciones</th>
                 </tr>
             </thead>
-            <% if (client) { %>
+            <% if (invoiceData) { %>
             <tbody>
-                <% for (var i=0; i < client.length; i++) { %>
+                <% for (var i=0; i < invoiceData.length; i++) { %>
                 <tr>
-                    <td><%= client[i].idCliente %></td>
-                    <td><%= client[i].nombres %></td>
-                    <td><%= client[i].Apaterno %></td>
-                    <td><%= client[i].Amaterno %></td>
-                    <td><%= client[i].telefono %></td>
-                    <td><%= client[i].correo %></td>
-                    <td><%= client[i].fechaRegistro %></td>
-                    <td>
-                        <a href="/api/client/delete-client/<%= client[i].idCliente%>" class="btn btn-danger">Eliminar</a>
-                        <a href="/api/client/update-client/<%= client[i].idCliente%>" class="btn-update">Actualizar</a>
-                    </td>
+                    <td><%= invoiceData[i].idFactura %></td>
+                    <td><%= invoiceData[i].idProveedor %></td>
+                    <td><%= invoiceData[i].subtotal %></td>
+                    <td><%= invoiceData[i].descuento %></td>
+                    <td><%= invoiceData[i].IVA %></td>
+                    <td><%= invoiceData[i].IEPS %></td>
+                    <td><%= invoiceData[i].total %></td>
+                    <td><%= invoiceData[i].fechaRegistro %></td>
                 </tr>
                 <% } %>
             </tbody>

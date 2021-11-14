@@ -8,6 +8,7 @@
     <!-- <link rel="stylesheet" href="/css/styles.css"> -->
     <link rel="stylesheet" href="/css/styles.css">
     <link rel="stylesheet" href="/css/forms.css">
+    <link rel="shortcut icon" href="/img/logo.ico">
     <script src="https://kit.fontawesome.com/a54879e6c0.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,35 +18,7 @@
 </head>
 
 <body>
-    <header>
-        <div class="container">
-            <div class="nav-bar">
-                <div class="img">
-                    <!-- <img src="/img/logo.jpeg" class="logo" alt="Logo miscelanea esmeralda"> -->
-                    <img src="/img/logo.jpeg" class="logo" alt="Logo miscelanea esmeralda">
-                </div>
-
-                <nav>
-                    <ul>
-                        <li>
-                            <a href="#">Inicio</a>
-                        <li>
-                            <a href="#">Adminsitración de usuarios</a>
-                        </li>
-
-                        <li>
-                            <a href="#">Ventas</a>
-                        </li>
-
-                        <li>
-                            <a href="#">Finanzas</a>
-                        </li>
-                    </ul>
-
-                </nav>
-            </div>
-        </div>
-    </header>
+    <%-include ('partials/_header') %>
 
     <div class="container">
         <h1>Registrar Cliente</h1>

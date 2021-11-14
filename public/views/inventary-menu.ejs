@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/img/logo.ico">
     <link rel="stylesheet" href="/css/styles.css">
     <script src="https://kit.fontawesome.com/a54879e6c0.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,34 +16,7 @@
 </head>
 
 <body>
-    <header>
-        <div class="container">
-            <div class="nav-bar">
-                <div class="img">
-                    <img src="/img/logo.jpeg" class="logo" alt="Logo miscelanea esmeralda">
-                </div>
-
-                <nav>
-                    <ul>
-                        <li>
-                            <a href="#">Inicio</a>
-                        <li>
-                            <a href="#">Adminsitración de usuarios</a>
-                        </li>
-
-                        <li>
-                            <a href="#">Ventas</a>
-                        </li>
-
-                        <li>
-                            <a href="#">Finanzas</a>
-                        </li>
-                    </ul>
-
-                </nav>
-            </div>
-        </div>
-    </header>
+    <%-include ('partials/_header') %>
 
     <div class="container">
         <div class="cards">
@@ -50,7 +24,7 @@
                 <div class="card-logo">
                     <i class="fas fa-plus-square"></i>
                 </div>
-                <a href="/api/supplier/show-form">Agregar Artículos</a>
+                <a href="/api/inventary/show-form">Agregar Artículos</a>
             </div>
 
             <div class="card">
@@ -58,15 +32,6 @@
                     <i class="fas fa-users"></i>
                 </div>
                 <a href="/api/inventary/get-products">Listar artículos</a>
-            </div>
-
-            <div class="card">
-                <div class="card-logo">
-                    <i class="fas fa-boxes"></i>
-                </div>
-                <div class="button-a">
-                    <a href="/api/supplier/get-supplier">Actualizar inventario</a>
-                </div>
             </div>
         </div>
     </div>

@@ -11,11 +11,15 @@ class Server {
         this.port = process.env.PORT;
 
         this.paths = {
+            index: '/index',
             client: '/api/client',
             employee: '/api/employee',
             supplier: '/api/supplier',
-            inventary: '/api/inventary'
+            inventary: '/api/inventary',
+            finances: '/api/finances',
+            sales: '/api/sales'
         }
+
         this.settings();
 
         // Conectar a la base de datos
@@ -49,10 +53,13 @@ class Server {
     }
 
     routes() {
+        this.app.use(this.paths.index, require('../routes/principalPage'));
         this.app.use(this.paths.client, require('../routes/client'));
         this.app.use(this.paths.employee, require('../routes/employees'));
         this.app.use(this.paths.supplier, require('../routes/supplier'));
         this.app.use(this.paths.inventary, require('../routes/inventary'));
+        this.app.use(this.paths.finances, require('../routes/finances'));
+        //this.app.use(this.paths.sales, require('../routes/sales'));
     }
 
     listen() {

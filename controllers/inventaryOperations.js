@@ -24,7 +24,7 @@ const showInventaryForm = (req, res) => {
             if (err) {
                 res.json(err);
             }
-            
+
 
             res.render('addInventary', {
                 suppliers
@@ -33,88 +33,106 @@ const showInventaryForm = (req, res) => {
     });
 }
 
-const addSupplier = (req = request, res = response) => {
-        const { nombreEmpresa, telefono, correo } = req.body;
-        const data = {
-            nombreEmpresa,
-            telefono,
-            correo
-        }
+const addProduct = (req = request, res = response) => {
+    const { idProveedor,nombreArticulo, precioCompra, precioVenta, entradas, codigoBarras } = req.body;
+    
+    const salidas = 0;
+    const existencias = entradas;
+    const data = {
+        idProveedor,
+        nombreArticulo,
+        precioCompra,
+        precioVenta,
+        entradas,
+        salidas,
+        codigoBarras,
+        existencias
+    }
 
-        req.getConnection((err, conn) => {
+    req.getConnection((err, conn) => {
+        if (err) {
+            res.json(err);
+        }
+        // recibe un array de datos
+        conn.query('INSERT INTO inventario set ?', [data], (err, data) => {
             if (err) {
                 res.json(err);
             }
-            // recibe un array de datos
-            conn.query('INSERT INTO proveedores set ?', [data], (err, data) => {
-                if (err) {
-                    res.json(err);
-                }
-                console.log(data);
-                res.redirect('/api/supplier/get-supplier');
+            console.log(data);
+            res.redirect('/api/inventary/get-products');
+        });
+    });
+
+};
+
+
+const removeProduct = (req = request, res = response) => {
+    const { id } = req.params;
+
+    req.getConnection((err, conn) => {
+        conn.query('DELETE FROM  inventario WHERE idProducto = ?', [id], (err, rows) => {
+            if (err) {
+                console.log(err);
+                res.json(err);
+            }
+            console.log(rows);
+            res.redirect('/api/inventary/get-products');
+        });
+    });
+};
+
+
+const edidProduct = (req, res) => {
+    const { id } = req.params;
+
+    req.getConnection((err, conn) => {
+        conn.query('SELECT * FROM inventario WHERE idProducto = ?', [id], (err, rows, fields) => {
+
+            if (err) {
+                res.json(err);
+            }
+            const data = rows[0];
+
+            res.render('edit_inventary', {
+                data
             });
         });
+    });
+};
 
-    };
+const updateProduct = (req = request, res = response) => {
+    const { id } = req.params;
 
+    const { nombreArticulo, precioCompra, precioVenta, entradas, codigoBarras } = req.body;
+// Actualiza las existencias
+    const existencias = entradas;
 
-    const removeSupplier = (req = request, res = response) => {
-        const { id } = req.params;
-
-        req.getConnection((err, conn) => {
-            conn.query('DELETE FROM  proveedores WHERE idProveedor = ?', [id], (err, rows) => {
-                if (err) {
-                    console.log(err);
-                    res.json(err);
-                }
-                console.log(rows);
-                res.redirect('/api/supplier/get-supplier');
-            });
-        });
-    };
-
-
-    const editSupplier = (req, res) => {
-        const { id } = req.params;
-
-        req.getConnection((err, conn) => {
-            conn.query('SELECT * FROM proveedores WHERE idProveedor = ?', [id], (err, rows, fields) => {
-
-                if (err) {
-                    res.json(err);
-                }
-                const data = rows[0];
-
-                res.render('edit_supplier', {
-                    data
-                });
-            });
-        });
-    };
-
-    const updateSupplier = (req = request, res = response) => {
-        const { id } = req.params;
-        const { nombreEmpresa, telefono, correo } = req.body;
-        console.log(id);
-        const data = {
-            nombreEmpresa,
-            telefono,
-            correo
-        }
-        console.log("id: " + id);
-        req.getConnection((err, conn) => {
-            conn.query('UPDATE proveedores set ? WHERE idProveedor = ?', [data, id], (err, rows) => {
-                console.log(rows);
-                if (err) {
-                    res.json(err);
-                }
-                res.redirect('/api/supplier/get-supplier');
-            });
-        });
+    const data = {
+        nombreArticulo,
+        precioCompra,
+        precioVenta,
+        entradas,
+        codigoBarras,
+        existencias
     }
 
-    module.exports = {
-        inventaryMenu,
-        getProducts,
-        showInventaryForm
-    }
+    req.getConnection((err, conn) => {
+        conn.query('UPDATE inventario set ? WHERE idProducto = ?', [data, id], (err, rows) => {
+            console.log(rows);
+            if (err) {
+                res.json(err);
+            }
+            res.redirect('/api/inventary/get-products');
+        });
+    });
+}
+
+module.exports = {
+    inventaryMenu,
+    getProducts,
+    showInventaryForm,
+    addProduct,
+    removeProduct,
+    edidProduct,
+    updateProduct
+}
