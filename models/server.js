@@ -59,7 +59,7 @@ class Server {
         this.app.use(this.paths.supplier, require('../routes/supplier'));
         this.app.use(this.paths.inventary, require('../routes/inventary'));
         this.app.use(this.paths.finances, require('../routes/finances'));
-        //this.app.use(this.paths.sales, require('../routes/sales'));
+        this.app.use(this.paths.sales, require('../routes/sales'));
     }
 
     listen() {

@@ -8,7 +8,7 @@ connectDB = myConnection(mysql, {
     host: 'localhost',
     user: 'root',
     password: '',
-    database: 'puntoventa'
+    database: 'puntoventa2'
 }, 'single');
 
 

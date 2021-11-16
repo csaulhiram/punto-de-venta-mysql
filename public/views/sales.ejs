@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/img/logo.ico">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/table.css">
+    <link rel="stylesheet" href="/css/sales.css">
+    <script src="https://kit.fontawesome.com/a54879e6c0.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,300&display=swap"
+        rel="stylesheet">
+    <title>Ventas</title>
+</head>
+
+<body>
+    <%-include ('partials/_header') %>
+
+        <div class="container">
+            <h1>Ventas</h1>
+            <div class="sales-box">
+                <div class="form">
+                    <form action="get-products" method="POST">
+                        <label for="product">Añadir artículos</label>
+                        <input list="options" name="product" id="product">
+
+                        <datalist id="options">
+                            <% for (let i=0; i < products.length; i++) { %>
+                            <option value="<%= products[i].nombreArticulo%>"></option>
+                            <% } %>
+                        </datalist>
+                        <input type="submit" value="Agregar">
+                    </form>
+                    
+                    <% if(total > 0) {%> 
+                    <div class="total-sale">
+                        <p>Total: $ <%= total%></p>
+                    </div>
+                    <% } %> 
+                </div>
+                <hr>
+                <div class="products-added">
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Producto</th>
+                                <th>Precio</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% for (let i=0; i < productsCar.length; i++) { %>
+                            <tr>
+                                <td> <%= productsCar[i].nombreArticulo %>  </td>
+                                <td>$ <%= productsCar[i].precioVenta %> </td>
+                            </tr>
+                            <% } %>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="actions-buttons">
+
+                    <a href="#">Factura</a>
+                    <a href="/api/sales/charge">Cobrar</a>
+
+                </div>
+
+            </div>
+
+        </div>
+</body>
+
+</html

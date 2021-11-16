@@ -55,12 +55,9 @@ CREATE TABLE IF NOT EXISTS inventario(idProducto INT NOT NULL AUTO_INCREMENT,
 	FOREIGN KEY(idProveedor) REFERENCES proveedores(idProveedor));
  
 CREATE TABLE IF NOT EXISTS ventas(idVenta INT NOT NULL AUTO_INCREMENT,
-	idEmpleado INT NOT NULL,
-	fechaRegistro timestamp NOT NULL DEFAULT current_timestamp,
-	cantidad INT NOT NULL,
 	total FLOAT NOT NULL,
-	PRIMARY KEY(idVenta),
-	FOREIGN KEY(idEmpleado) REFERENCES empleados(idEmpleado));
+	fechaRegistro timestamp NOT NULL DEFAULT current_timestamp,
+	PRIMARY KEY(idVenta));
 
 CREATE TABLE IF NOT EXISTS productosVendidos(idVenta INT NOT NULL,
 	idProducto INT NOT NULL,

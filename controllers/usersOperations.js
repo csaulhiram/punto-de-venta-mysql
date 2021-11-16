@@ -11,7 +11,7 @@ const getClient = (req, res) => {
             if (err) {
                 res.json(err);
             }
-
+            console.log(client);
             res.render('client-list', {
                 client
             });
