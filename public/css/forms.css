@@ -16,7 +16,8 @@ form {
 .container input[type='time'], 
 .container input[type='file'], 
 .container input[type='number'], 
-.container .select {
+.container .select,
+.container #client {
     width: 30%;
     height: 40px;
     color: #000;

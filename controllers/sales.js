@@ -1,5 +1,5 @@
-const { req, res } = require('express');
 const { updateInventary } = require('../helpers/sales_helper');
+const PDF = require('pdfkit-construct');
 
 // Global variables
 let productsCar = [];
@@ -89,24 +89,82 @@ const charge = (req, res) => {
 
             // update inventary
             for (const product of productsCar) {
-
-
                 let idProducto = product.idProducto;
                 updateInventary(req, idProducto);
             }
 
-            /// print ticket
-            
 
-            // restart global variables
-            productsCar = [];
-            total = 0;
-            precioVenta = 0;
-            totalCompra = 0;
-            res.redirect('/api/sales/sales');
+
+            res.redirect('/api/sales/print-ticket');
         });
 
     });
+}
+
+const printTicket = (req, res) => {
+    console.log('Imprimiendo');
+    // print ticket
+    const doc = new PDF({
+        size: 'A4',
+        margins: { top: 20, left: 100, right: 10, bottom: 20 },
+        bufferPages: true,
+    });
+
+    const filename = `Ticket-${Date.now()}.pdf`;
+
+    const stream = res.writeHead(200, {
+        'Content-Type': 'application/pdf',
+        'Content-disposition': `attachment;filename=${filename}`
+    });
+
+    doc.on('data', (data) => { stream.write(data) });
+    doc.on('end', () => { stream.end() });
+
+
+    doc.setDocumentHeader({
+        heigth: '30%'
+    }, () => {
+        doc.fontSize(18).text('"Miscelánea Esmeralda"', {
+            width: 420,
+            align: 'center'
+        });
+        doc.fontSize(18).text('tel. 7228021175', {
+            width: 420,
+            align: 'center'
+        });
+        doc.fontSize(12);
+        doc.text(`Calle: Juan de la Barrera 504, colonia Niños Héroes Cp. 50100, Toluca Edo Méx`, {
+            width: 420,
+            align: 'center'
+        });
+        doc.fontSize(20).text(`Total: ${total}`, {
+            width: 420,
+            align: 'right'
+        });
+
+    });
+    // CREATE TABLE
+    doc.addTable([
+        { key: 'nombreArticulo', label: 'Descripción', align: 'center' },
+        { key: 'precioVenta', label: 'Precio', align: 'center' }
+    ], productsCar, {
+        border: null,
+        width: "fill_body",
+        striped: true,
+        stripedColors: ["#f6f6f6", "#d6c4dd"],
+        cellsPadding: 10,
+        marginLeft: 0,
+        marginRight: 50,
+        headAlign: 'center'
+    });
+    doc.render();
+    doc.end();
+    // restart global variables
+    productsCar = [];
+    total = 0;
+    precioVenta = 0;
+    totalCompra = 0;
+    res.redirect('/api/sales/sales');
 }
 
 
@@ -114,5 +172,6 @@ const charge = (req, res) => {
 module.exports = {
     salesView,
     getProducts,
-    charge
+    charge,
+    printTicket
 }

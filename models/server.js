@@ -17,7 +17,8 @@ class Server {
             supplier: '/api/supplier',
             inventary: '/api/inventary',
             finances: '/api/finances',
-            sales: '/api/sales'
+            sales: '/api/sales',
+            login: '/'
         }
 
         this.settings();
@@ -60,6 +61,7 @@ class Server {
         this.app.use(this.paths.inventary, require('../routes/inventary'));
         this.app.use(this.paths.finances, require('../routes/finances'));
         this.app.use(this.paths.sales, require('../routes/sales'));
+        this.app.use(this.paths.login, require('../routes/login'));
     }
 
     listen() {

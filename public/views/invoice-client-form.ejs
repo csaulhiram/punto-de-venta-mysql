@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/img/logo.ico">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/forms.css">
+    <script src="https://kit.fontawesome.com/a54879e6c0.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,300&display=swap"
+        rel="stylesheet">
+    <title>Registrar factura</title>
+</head>
+
+<body>
+    <%-include ('partials/_header') %>
+
+    <div class="container">
+        <h1>Facturar cliente</h1>
+        <form action="generate-invoice" method="POST" autocomplete="off">
+    
+            <input list="clients" name="client" id="client" placeholder="Buscar cliente">
+            <datalist id="clients">
+                <% for (let i=0; i < clients.length; i++) { %>
+                    <option value="<%= clients[i].idCliente %>"><%= clients[i].nombres %> <%= clients[i].Apaterno %> <%= clients[i].Amaterno %></option>            
+                    <% } %>
+            </datalist>
+
+            <input type="text" name="idVenta" placeholder="Digite el id de la venta" required>   
+            <input type="submit" value="Facturar cliente">
+        </form>
+    </div>
+
+</body>
+
+</html>

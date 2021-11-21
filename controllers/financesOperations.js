@@ -1,6 +1,5 @@
 
 
-
 const showInvoiceForm = (req, res) => {
     req.getConnection((err, conn) => {
         conn.query('SELECT idProveedor, nombreEmpresa FROM proveedores', (err, suppliers) => {
@@ -58,9 +57,80 @@ const getInvoices = (req, res) => {
     });
 }
 
+const invoiceClientForm = (req, res) => {
+    req.getConnection((err, conn) => {
+        conn.query('SELECT * FROM clientes', (err, clients) => {
+            if (err) {
+                res.json(err);
+            }
+            res.render('invoice-client-form', {
+                clients
+            });
+        });
+    });
+}
+
+// TO DO:
+const generateInvoice = (req, res) => {
+    const { client, idVenta } = req.body;
+
+
+    req.getConnection((err, conn) => {
+        conn.query('SELECT idProducto FROM productosVendidos WHERE idVenta = ?', [idVenta], (err, productosId) => {
+            if (err) {
+                res.json(err);
+            }
+
+            let arrProduct = [];
+            for (const producto of productosId) {
+                conn.query('SELECT nombreArticulo, precioVenta from inventario  WHERE idProducto = ?', [producto], (err, productos) => {
+                    if (err) {
+                        console.log(err);
+                        res.json(err);
+                    }
+                    arrProduct.push(productos);
+                });
+            }
+
+        });
+
+
+
+        /*         //regist invoice
+                conn.query('INSERT INTO facturaCliente set ?', [{client, idVenta}], (err, data) => {
+                    if (err) {
+                        console.log(err);
+                        res.json(err);
+                    }
+                    console.log(data);
+            
+                }); */
+    });
+
+
+
+}
+
+
+
+const salesDay = (req, res) => {
+    req.getConnection((err, conn) => {
+        conn.query('SELECT * from VENTAS', (err, sales) => {
+            if (err) {
+                console.log(err);
+                res.json(err);
+            }
+            res.render('sales-list', { sales });
+        })
+    })
+}
+
 
 module.exports = {
     showInvoiceForm,
     addInvoice,
-    getInvoices
+    getInvoices,
+    invoiceClientForm,
+    generateInvoice,
+    salesDay
 }
